@@ -1,0 +1,18 @@
+FROM python:3.8
+
+#RUN pip install Django djangorestframework
+
+WORKDIR /test-js-DRF
+
+COPY . /test-js-DRF
+
+COPY ./requirements.txt /test-js-DRF/requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
+
+
+ENV DJANGO_SETTINGS_MODULE=backend.settings
+
+CMD ["python3", "manage.py", "runserver", "0.0.0.0:8001"]
+
+# статические файлы
+# RUN python3 manage.py collectstatic --noinput
