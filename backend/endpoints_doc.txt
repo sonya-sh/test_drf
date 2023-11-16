@@ -1,0 +1,160 @@
+Эндпоинты:
+
+1. Users Api
+
+http://127.0.0.1:8000/users_api/auth/token/login/
+Method: POST
+Request:
+{
+  "password": "string",
+  "username": "string"
+}
+Response:
+{
+    "auth_token": "723b76186bfe8c9e4e04efcb06fdf57b59e6f21c"
+}
+
+http://127.0.0.1:8000/users_api/auth/token/logout/
+Method: POST
+Request: token в заголовке
+Response: -
+
+http://127.0.0.1:8000/users_api/auth/users/
+Method: GET
+Request: token в заголовке
+Response: (для админа список всех юзеров, для обычного юзера - только его данные)
+{
+    "count": 1,
+    "next": null,
+    "previous": null,
+    "results": [
+        {
+            "email": "user2@mail.ru",
+            "id": 4,
+            "username": "username2"
+        }
+    ]
+}
+
+http://127.0.0.1:8000/users_api/auth/users/
+Method: POST
+Request:
+{
+"first_name": "string",
+"last_name": "string",
+"email": "user@example.com",
+"date_of_birth": "2019-08-24",
+"phone_number": "string",
+"username": "string",
+"password": "string"
+}
+Response: -
+
+http://127.0.0.1:8000/users_api/auth/users/set_password/
+Method: POST
+Request:
+{
+"new_password": "string",
+"re_new_password": "string",
+"current_password": "string",
+}
+Response: -
+
+
+
+=============================================================================
+
+
+
+2. Products Api
+
+http://127.0.0.1:8000/products_api/products/
+Method: GET
+Request: -
+Response:
+{
+  "count": 0,
+  "next": "http://example.com",
+  "previous": "http://example.com",
+  "results": [
+    {
+      "id": 0,
+      "image": "http://example.png",
+      "name": "string",
+      "price": "string",
+      "evaluation": 0
+    }
+  ]
+}
+
+http://127.0.0.1:8000/products_api/products/
+Method: POST
+Request:
+{
+"id": 0,
+"image": "http://example.com",
+"name": "string",
+"price": "string",
+"evaluation": 0
+}
+Response: - 
+
+http://127.0.0.1:8000/products_api/products/{id}/
+Method: GET
+Request: - 
+Response: 
+{
+"id": 0,
+"image": "http://example.com",
+"name": "string",
+"price": "string",
+"evaluation": 0
+}
+
+http://127.0.0.1:8000/products_api/products/{id}/
+Method: DELETE
+Request: - 
+Response: -
+
+PUT PATCH ???
+
+
+
+=============================================================================
+
+
+3. Cart API
+
+http://127.0.0.1:8000/cart_api/
+Method GET
+Request: token в заголовке
+Response:
+{
+    "count": 1,
+    "next": null,
+    "previous": null,
+    "results": [
+        {
+            "user": 4,
+            "items": [
+                {
+                    "product": 1,
+                    "quantity": 1
+                }
+            ]
+        }
+    ]
+}
+
+http://127.0.0.1:8000/cart_api/items/
+Method: POST
+Request: token в заголовке
+{
+"product": 0,
+"quantity": 2147483647
+}
+Response:
+{
+"product": 0,
+"quantity": всего
+}

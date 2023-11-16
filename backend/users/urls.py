@@ -4,19 +4,6 @@ from .views import *
 urlpatterns = [
     path('auth/', include('djoser.urls')),
     re_path(r'^auth/', include('djoser.urls.authtoken')),
+
+    #path('auth/users/', CustomUserViewSet.as_view({'get': 'list', 'post': 'create'}), name='user-list'),
 ]
-
-"""
-http://0.0.0.0:8001/users_api/auth/token/login/     POST
-
-Запрос
-{
-"password": "string",
-"username": "string"
-}
-
-Ответ
-{
-    "auth_token": "723b76186bfe8c9e4e04efcb06fdf57b59e6f21c"
-}
-"""
